@@ -1,0 +1,21 @@
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+#spring.jpa.driverClassName=org.h2.Driver
+#spring.datasource.url=jdbc:h2:tcp://localhost:9092/~/test
+#spring.datasource.url=jdbc:h2:~/test
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+spring.datasource.url=jdbc:mysql://localhost:3306/datalogger
+
+spring.datasource.username=data_writer
+spring.datasource.password=pwd_writer
+spring.jpa.hibernate.ddl-auto=none
+
+# url=jdbc:h2:mem:testdb
+
+spring.jpa.show-sql=true
+
+server.contextPath=/datalogger
+server.port=9000
+
+logging.level.org.springframework.web=INFO
+logging.level.org.hibernate=INFO
