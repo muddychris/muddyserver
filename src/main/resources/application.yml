@@ -18,11 +18,11 @@ server:
     contextPath: /muddyserver
   port: 9000
   ssl:
-    key-store: classpath:keystore.p12
-    key-store-password: password
+    key-store: classpath:chris.p12
+    key-store-password: aardvark
     key-store-type: pkcs12
-    key-alias: tomcat
-    key-password: password
+    key-alias: chris
+    key-password: aardvark
     enabled: true
 
 logging:

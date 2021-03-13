@@ -2,3 +2,19 @@ keytool -genkeypair -alias tomcat -keyalg RSA -keysize 2048 -storetype PKCS12 -k
 
 
 mvn spring-boot:run -Drun.jvmArguments="-Djavax.net.debug=ssl"
+
+
+# keytool creates a single keystore file
+keytool -genkeypair -alias chris -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore chris.p12 -validity 3650
+keytool -list -v -keystore chris.p12
+#export the certificate
+keytool -export -alias chris -keystore chris.p12 -rfc -file public.cert
+keytool -import -alias chris -file cacert.pem -storetype PKCS12 -keystore chris.p12
+
+https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl
+
+# openssl creates a key and a (self-signed) certificate file
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+# list the contents of a certificate file
+# decode this on web, eg https://www.geocerts.com/certificate-decoder
+openssl x509 -in cert.pem -text
