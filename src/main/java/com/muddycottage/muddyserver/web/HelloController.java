@@ -19,7 +19,7 @@ public class HelloController {
         count++ ;
 
         String outStr = String.format ("Home %d", count) ;
-        System.out.println(outStr) ;
+        logger.info(outStr) ;
         return new ResponseEntity<>(outStr, HttpStatus.OK) ;
     }
 
@@ -28,7 +28,7 @@ public class HelloController {
         count++ ;
 
         String outStr = String.format ("Hello %d", count) ;
-        System.out.println(outStr) ;
+        logger.info(outStr) ;
         return new ResponseEntity<>(outStr, HttpStatus.OK) ;
     }
 
@@ -53,7 +53,7 @@ public class HelloController {
         }
 
         if ("111".equals(to)) {
-            System.out.println("sleeping");
+            logger.info("sleeping");
             try {
                 Thread.sleep(3000);
             } catch (Exception e) {
