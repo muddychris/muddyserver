@@ -12,8 +12,11 @@
 	<artifactId>muddyserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>muddyserver</name>
-	<description>Demo project for Spring Boot</description>
+	<description>General purpose REST server for Muddy Cottage projects</description>
 	<properties>
+		<sonar.projectKey>muddycottage_muddyserver</sonar.projectKey>
+		<sonar.organization>muddycottage</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>

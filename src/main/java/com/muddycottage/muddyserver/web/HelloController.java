@@ -4,9 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
@@ -16,7 +14,16 @@ public class HelloController {
 
     private final Logger logger = LoggerFactory.getLogger(HelloController.class) ;
 
-    @RequestMapping(value = "hello", method = RequestMethod.GET)
+    @GetMapping(value = "")
+    public ResponseEntity<String> home() {
+        count++ ;
+
+        String outStr = String.format ("Home %d", count) ;
+        System.out.println(outStr) ;
+        return new ResponseEntity<>(outStr, HttpStatus.OK) ;
+    }
+
+    @GetMapping(value = "hello")
     public ResponseEntity<String> hello() {
         count++ ;
 
@@ -25,7 +32,7 @@ public class HelloController {
         return new ResponseEntity<>(outStr, HttpStatus.OK) ;
     }
 
-    @RequestMapping(value = "api-adv.php", method = RequestMethod.POST)
+    @PostMapping(value = "api-adv.php")
     public ResponseEntity<String> smsApi(String username, String password, String to) {
         smsCount++ ;
 
@@ -37,10 +44,22 @@ public class HelloController {
         else if ("123".equals(to)) {
             outStr = String.format("BAD:%s", to)  ;
         }
+        else if ("456".equals(to)) {
+            outStr = String.format("ERR:%s", to)  ;
+            return new ResponseEntity<>(outStr, HttpStatus.BAD_REQUEST) ;
+        }
         else {
             outStr = String.format("OK:%s:%07d", to, smsCount);
         }
 
+        if ("111".equals(to)) {
+            System.out.println("sleeping");
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+                logger.info("Sleep interrupted") ;
+            }
+        }
         System.out.println(outStr) ;
         return new ResponseEntity<>(outStr, HttpStatus.OK) ;
     }

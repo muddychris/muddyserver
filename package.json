@@ -1,0 +1,22 @@
+{
+  "name": "muddyserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^7.24.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muddycottage/muddyserver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muddycottage/muddyserver/issues"
+  },
+  "homepage": "https://github.com/muddycottage/muddyserver#readme"
+}
